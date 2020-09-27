@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Bosslike\Application\Kernel;
 use Symfony\Component\Dotenv\Dotenv;

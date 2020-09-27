@@ -2,42 +2,38 @@
 
 namespace Bosslike\Application\Controller;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
+use Bosslike\Domain\Handler\BotsRunnerHandlerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BosslikeController extends AbstractController
 {
     /**
-     * @var ClientInterface
+     * @var BotsRunnerHandlerInterface
      */
-    private $restClient;
+    private $botsRunnerHandler;
 
     /**
      * BosslikeController constructor.
      *
-     * @param ClientInterface $restClient
+     * @param BotsRunnerHandlerInterface $botsRunnerHandler
      */
-    public function __construct(ClientInterface $restClient)
+    public function __construct(BotsRunnerHandlerInterface $botsRunnerHandler)
     {
-        $this->restClient = $restClient;
+        $this->botsRunnerHandler = $botsRunnerHandler;
     }
 
     /**
-     * @Route("/bosslike", name="bosslike")
+     * @Route("/v1/bosslike", name="bosslike")
      */
-    public function index()
+    public function runBots()
     {
-        try {
-            dd($this->restClient->get('https://httpbin.org/post'));
-        } catch (GuzzleException $exception) {
-            dd($exception->getMessage());
+        try{
+            ($this->botsRunnerHandler)();
+        } catch (\Exception $exception) {
+            return $this->json($exception->getMessage());
         }
 
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/BosslikeController.php',
-        ]);
+        return $this->json('ok');
     }
 }
