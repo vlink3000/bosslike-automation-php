@@ -4,5 +4,8 @@ namespace Bosslike\Domain\Handler;
 
 interface BotsRunnerHandlerInterface
 {
+    /**
+     * @return void
+     */
     public function __invoke(): void;
 }

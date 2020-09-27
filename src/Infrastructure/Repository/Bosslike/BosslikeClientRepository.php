@@ -22,6 +22,9 @@ class BosslikeClientRepository implements BosslikeClientRepositoryInterface
         $this->credentialsRepository = $credentialsRepository;
     }
 
+    /**
+     * @return void
+     */
     public function subscribeVk(): void
     {
         dd($this->credentialsRepository->getKeys());

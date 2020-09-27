@@ -4,8 +4,13 @@ namespace Bosslike\Application\Controller;
 
 use Bosslike\Domain\Handler\BotsRunnerHandlerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class BosslikeController
+ * @package Bosslike\Application\Controller
+ */
 class BosslikeController extends AbstractController
 {
     /**
@@ -26,7 +31,7 @@ class BosslikeController extends AbstractController
     /**
      * @Route("/v1/bosslike", name="bosslike")
      */
-    public function runBots()
+    public function runBots(): Response
     {
         try{
             ($this->botsRunnerHandler)();

@@ -21,6 +21,9 @@ class BotsRunnerHandler implements BotsRunnerHandlerInterface
         $this->bosslikeClientRepository = $bosslikeClientRepository;
     }
 
+    /**
+     *  @return void
+     */
     public function __invoke(): void
     {
         $this->bosslikeClientRepository->subscribeVk();
