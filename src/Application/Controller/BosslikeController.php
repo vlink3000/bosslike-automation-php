@@ -29,14 +29,14 @@ class BosslikeController extends AbstractController
     }
 
     /**
-     * @Route("/v1/bosslike", name="bosslike")
+     * @Route("/api/v1/bosslike", methods={"POST"})
      */
     public function runBots(): Response
     {
         try{
             ($this->botsRunnerHandler)();
         } catch (\Exception $exception) {
-            return $this->json($exception->getMessage());
+            return $this->json('NOT ok!');
         }
 
         return $this->json('ok');

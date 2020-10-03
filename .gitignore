@@ -1,4 +1,4 @@
-###> symfony/framework-bundle ###
+/.idea
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -7,5 +7,4 @@
 /src/.preload.php
 /var/
 /vendor/
-###< symfony/framework-bundle ###
 /config/keys/secrets.yaml
